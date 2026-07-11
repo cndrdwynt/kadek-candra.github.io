@@ -1,345 +1,516 @@
-<!--
-  Hello!
-  -
-  Simplefolio is a clean and responsive portfolio template for Developers!
-  Created by Jacobo Martinez.
-  -
-  Github Repo: https://github.com/cobiwave/simplefolio/
-  Readme: https://github.com/cobiwave/simplefolio/README.md
-  -
-  For business & inquires, contact me -> jacobojavier98@gmail.com
--->
 <!DOCTYPE html>
-<html lang="en" class="sr">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="shortcut icon" type="image/png" href="assets/favicon.png" />
 
-    <!-- Todo: put here your site title -->
-    <title>[Your name here] | Developer</title>
-    <!-- Todo: add some coding keywords below - e.g: (javascript, yourusername, etc) -->
-    <meta name="keywords" content="[username], [name], skill" />
-    <!-- Todo: improve your SEO by adding a small description of you -->
-    <meta name="description" content="[Your name here] | Developer" />
+  <title>Kadek Candra Dwi Yanti | Software & IoT Developer</title>
+  <meta name="keywords" content="Kadek Candra Dwi Yanti, Computer Engineering, ITS, RAG, LLM, Web Developer, IoT, ESP32" />
+  <meta name="description" content="Kadek Candra Dwi Yanti — Mahasiswa Teknik Komputer ITS. Membangun aplikasi web, mobile, sistem AI, dan perangkat IoT." />
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link rel="stylesheet" href="styles.scss" />
-    <script
-      defer
-      src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"
-    ></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-    <!-- Todo: remove the below script once you finish your portfolio -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-  </head>
+  <style>
+    :root{
+      --bg: #F6F5F1;
+      --bg-alt: #EFEDE6;
+      --ink: #12241C;
+      --ink-soft: #445048;
+      --trace: #1F6E4A;
+      --trace-dark: #123524;
+      --copper: #B8843B;
+      --line: #D8D4C8;
+      --white: #FFFFFF;
+      --radius: 4px;
+      --max: 980px;
+    }
+    *{ box-sizing: border-box; }
+    html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'IBM Plex Sans', sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3, .mono, nav, .eyebrow, .tag, .btn, .trace-label{
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    a{ color: inherit; }
+    .container{ max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    ::selection{ background: var(--trace); color: var(--white); }
 
-  <!-- Todo: read the following HTML Todos to create your stunning portfolio website -->
-  <body>
-    <div id="top"></div>
+    .skip-link{
+      position:absolute; left:-9999px; top:0; background:var(--trace); color:#fff;
+      padding:10px 16px; z-index:100;
+    }
+    .skip-link:focus{ left:16px; top:16px; }
 
-    <!-- **** Hero Section **** -->
-    <section id="hero" class="jumbotron">
-      <div class="container">
-        <h1 class="hero-title load-hidden">
-          Hi, my name is <span class="text-color-main">Your Name</span>
-          <br />
-          I'm the Unknown Developer.
-        </h1>
-        <p class="hero-cta load-hidden">
-          <a rel="noreferrer" class="cta-btn cta-btn--hero" href="#about"
-            >Know more</a
-          >
-        </p>
+    header{
+      position: sticky; top:0; z-index:20;
+      background: rgba(246,245,241,0.9); backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav.container{
+      display:flex; align-items:center; justify-content:space-between;
+      height:64px; font-size:13px; letter-spacing:.02em;
+    }
+    nav .brand{ font-weight:600; color: var(--trace-dark); text-decoration:none; }
+    nav .links{ display:flex; gap:24px; }
+    nav .links a{ text-decoration:none; color: var(--ink-soft); }
+    nav .links a:hover{ color: var(--trace); }
+    nav .links a:focus-visible, a:focus-visible, button:focus-visible{
+      outline: 2px solid var(--trace); outline-offset: 2px;
+    }
+
+    #hero{ position:relative; padding: 110px 0 90px; overflow:hidden; }
+    .eyebrow{
+      display:inline-block; font-size:12px; color: var(--trace-dark);
+      background: var(--white); border:1px solid var(--line); border-radius: 999px;
+      padding: 5px 12px; margin-bottom: 22px; letter-spacing:.04em;
+    }
+    .eyebrow span{ color: var(--copper); }
+    h1.hero-title{
+      font-family:'IBM Plex Sans', sans-serif;
+      font-weight:700; font-size: clamp(32px, 4.6vw, 50px);
+      line-height:1.15; max-width: 740px; margin:0 0 22px;
+      letter-spacing:-0.01em;
+    }
+    h1.hero-title .accent{ color: var(--trace); }
+    .hero-sub{
+      max-width: 620px; color: var(--ink-soft); font-size:17px; margin-bottom: 34px;
+    }
+    .btn-row{ display:flex; gap:14px; flex-wrap:wrap; }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 12px 20px; border-radius: var(--radius); font-size:13px;
+      text-decoration:none; border:1px solid transparent; transition:.15s ease;
+    }
+    .btn--solid{ background: var(--trace-dark); color:#fff; }
+    .btn--solid:hover{ background: var(--trace); }
+    .btn--ghost{ border-color: var(--ink); color: var(--ink); }
+    .btn--ghost:hover{ background: var(--ink); color:#fff; }
+
+    section{ position:relative; padding: 70px 0; }
+    .section-label{
+      font-size:12px; color: var(--copper); letter-spacing:.08em; text-transform:uppercase;
+      margin-bottom:10px; display:block;
+    }
+    .section-title{
+      font-family:'IBM Plex Sans', sans-serif; font-weight:700; font-size:26px; margin:0 0 34px;
+    }
+
+    #about{ background: var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .about-grid{ display:grid; grid-template-columns: 200px 1fr; gap:40px; align-items:start; }
+    .about-grid img{
+      width:100%; aspect-ratio: 1/1; object-fit:cover; border-radius: var(--radius);
+      border:1px solid var(--line);
+    }
+    .about-text p{ color: var(--ink-soft); margin: 0 0 16px; max-width: 620px; }
+    .stat-row{ display:flex; gap:28px; margin-top:22px; flex-wrap:wrap; }
+    .stat b{ display:block; font-family:'IBM Plex Mono', monospace; font-size:19px; color: var(--trace-dark); }
+    .stat span{ font-size:12px; color: var(--ink-soft); }
+
+    .highlights{
+      background: var(--trace-dark); border-radius: 10px;
+      padding: 28px 24px 24px; margin-top: 28px;
+    }
+    .highlights-title{
+      color:#fff; text-align:center; font-size:12.5px; letter-spacing:.08em;
+      margin:0 0 22px; text-transform:uppercase; font-weight:600;
+    }
+    .highlights-row{ display:flex; justify-content:center; gap:30px; flex-wrap:wrap; }
+    .highlight-item{ text-align:center; width:112px; }
+    .highlight-circle{
+      width:86px; height:86px; border-radius:50%; background:#3E8A68;
+      display:flex; align-items:center; justify-content:center; margin:0 auto 10px;
+      color:#fff; font-family:'IBM Plex Mono',monospace; font-weight:700; font-size:18px;
+      border: 3px solid rgba(255,255,255,0.15);
+    }
+    .highlight-label{ color:#E7E3D6; font-size:11.5px; font-weight:600; line-height:1.3; }
+
+    .skills-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .skill-card{
+      background: var(--white); border:1px solid var(--line); border-radius: var(--radius);
+      padding: 24px;
+    }
+    .skill-card h3{
+      margin:0 0 4px; font-size:15px; display:flex; align-items:center; gap:8px;
+    }
+    .skill-card .skill-note{ font-size:13px; color: var(--ink-soft); margin:0 0 16px; }
+    .skill-card.software h3{ color: var(--trace-dark); }
+    .skill-card.hardware h3{ color: var(--copper); }
+    .tag-cloud{ display:flex; flex-wrap:wrap; gap:8px; }
+    .tag{
+      font-size:12px; padding:5px 10px; border-radius: var(--radius);
+      background: var(--bg-alt); border:1px solid var(--line); color: var(--ink);
+    }
+    .skill-card.software .tag{ border-color:#cfe4d8; }
+    .skill-card.hardware .tag{ border-color:#ecdbbc; }
+
+    .project-card{
+      display:grid; grid-template-columns: 1fr 1fr; gap:36px; align-items:center;
+      padding: 30px 0; border-top:1px solid var(--line);
+    }
+    .project-card:last-child{ border-bottom:1px solid var(--line); }
+    .project-card.reverse .project-media{ order:2; }
+    .project-media{
+      background: var(--white); border:1px solid var(--line); border-radius: var(--radius);
+      aspect-ratio: 4/3; overflow:hidden; display:flex; align-items:center; justify-content:center;
+    }
+    .project-media img{ width:100%; height:100%; object-fit:cover; }
+    .project-flag{
+      display:inline-block; font-size:11px; color:#fff; background: var(--trace);
+      padding:3px 9px; border-radius: var(--radius); margin-bottom:10px; letter-spacing:.03em;
+    }
+    .project-flag.alt{ background: var(--copper); }
+    .project-card h3{ font-family:'IBM Plex Sans',sans-serif; font-size:19px; margin:0 0 10px; }
+    .project-card p{ color: var(--ink-soft); font-size:14.5px; margin:0 0 14px; }
+    .project-tags{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:16px; }
+    .project-tags .tag{ font-size:11px; }
+    .project-links a{ font-size:13px; text-decoration:none; margin-right:18px; color: var(--trace-dark); }
+    .project-links a:hover{ text-decoration:underline; }
+
+    .timeline{ position:relative; padding-left: 26px; }
+    .timeline::before{
+      content:""; position:absolute; left:5px; top:6px; bottom:6px; width:1px; background: var(--line);
+    }
+    .t-item{ position:relative; padding-bottom: 30px; }
+    .t-item:last-child{ padding-bottom:0; }
+    .t-item::before{
+      content:""; position:absolute; left:-26px; top:4px; width:11px; height:11px;
+      border-radius:50%; background: var(--bg); border:2px solid var(--trace);
+    }
+    .t-role{ font-weight:600; font-size:15px; }
+    .t-org{ font-size:13px; color: var(--copper); margin-bottom:6px; }
+    .t-desc{ font-size:14px; color: var(--ink-soft); max-width:620px; }
+    .t-date{ font-family:'IBM Plex Mono',monospace; font-size:11px; color: var(--ink-soft); }
+
+    .badge-row{ display:flex; gap:14px; margin-top:34px; flex-wrap:wrap; }
+    .badge{
+      display:flex; gap:12px; align-items:flex-start; background: var(--white);
+      border:1px solid var(--line); border-radius: var(--radius); padding:16px 18px; max-width:420px;
+    }
+    .badge .icon{ font-size:20px; line-height:1; }
+    .badge b{ display:block; font-size:13.5px; margin-bottom:3px; }
+    .badge span{ font-size:12.5px; color: var(--ink-soft); }
+
+    #contact{ text-align:center; background: var(--trace-dark); color:#fff; }
+    #contact .section-title{ color:#fff; }
+    #contact p{ color:#cfe3d8; max-width:520px; margin: 0 auto 30px; }
+    #contact .btn--solid{ background:#fff; color: var(--trace-dark); }
+    #contact .btn--solid:hover{ background: var(--bg-alt); }
+    #contact .btn--ghost{ border-color:#fff; color:#fff; }
+    #contact .btn--ghost:hover{ background:#fff; color: var(--trace-dark); }
+
+    footer{ padding: 26px 0; text-align:center; font-size:12px; color: var(--ink-soft); }
+    footer a{ text-decoration:none; color: var(--trace-dark); }
+
+    @media (max-width: 760px){
+      .about-grid{ grid-template-columns: 1fr; }
+      .about-grid img{ width:140px; }
+      .skills-grid{ grid-template-columns:1fr; }
+      .project-card{ grid-template-columns: 1fr; }
+      .project-card.reverse .project-media{ order:0; }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      html{ scroll-behavior:auto; }
+      *{ animation:none !important; transition:none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#about" class="skip-link">Lewati ke konten</a>
+
+  <header>
+    <nav class="container" aria-label="Navigasi utama">
+      <a href="#top" class="brand">KCDY_</a>
+      <div class="links">
+        <a href="#about">Tentang</a>
+        <a href="#skills">Keahlian</a>
+        <a href="#projects">Proyek</a>
+        <a href="#experience">Pengalaman</a>
+        <a href="#contact">Kontak</a>
       </div>
-    </section>
-    <!-- /END Hero Section -->
+    </nav>
+  </header>
 
-    <!-- **** About Section **** -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title load-hidden">About me</h2>
-        <div class="row about-wrapper">
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__image load-hidden">
-              <img
-                alt="Profile Image"
-                class="img-fluid rounded shadow-lg"
-                height="auto"
-                width="300px"
-                src="assets/profile.jpg"
-                alt="Profile Image"
-              />
-            </div>
-          </div>
-          <div class="col-md-6 col-sm-12">
-            <div class="about-wrapper__info load-hidden">
-              <p class="about-wrapper__info-text">
-                This is where you can describe about yourself. The more you
-                describe about yourself, the more chances you have!
-              </p>
-              <p class="about-wrapper__info-text">
-                Extra Information about you! like hobbies and your goals.
-              </p>
-              <span class="d-flex mt-3">
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--resume"
-                  href="assets/resume.pdf"
-                >
-                  View Resume
-                </a>
-              </span>
+  <div id="top"></div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="container">
+      <span class="eyebrow">Terbuka untuk magang <span>· IT / Web Development</span></span>
+      <h1 class="hero-title">
+        Halo, saya Kadek Candra Dwi Yanti —<br />
+        <span class="accent">mahasiswa Teknik Komputer</span> yang senang bikin aplikasi dan sistem AI.
+      </h1>
+      <p class="hero-sub">
+        Saya baru menyelesaikan magang sebagai AI Engineer di BLSDM Komdigi Surabaya UPT Kementerian Komdigi, membangun
+        chatbot berbasis LLM dan RAG yang dipakai langsung oleh publik. Di luar itu saya juga sering
+        mengerjakan proyek web, mobile, dan IoT.
+      </p>
+      <div class="btn-row">
+        <a href="#projects" class="btn btn--solid">Lihat Proyek</a>
+        <a href="assets/resume.pdf" target="_blank" rel="noreferrer" class="btn btn--ghost">Unduh CV</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <span class="section-label">01 — Profil</span>
+      <h2 class="section-title">Tentang Saya</h2>
+      <div class="about-grid">
+        <img src="assets/profile.jpg" alt="Foto profil Kadek Candra Dwi Yanti" />
+        <div class="about-text">
+          <p>
+            Saya mahasiswa Teknik Komputer ITS, dan sejak Agustus 2025 menjadi Asisten Laboratorium di
+            IoT Laboratory ITS.
+          </p>
+          <p>
+            Pada Februari–Juli 2026, saya menjalani magang di BLSDM Komdigi Surabaya UPT Kementrian Komdigi
+            sebagai AI Engineer Intern. Di sana saya mengembangkan "Rumino", knowladgebot yang
+            digunakan langsung oleh publik untuk mencari informasi mengenai pelatihan dan kantor BLSDM. Knowladgebot ini
+            berjalan dengan akurasi menjawab 85% dan keberhasilan training data 95%.
+          </p>
+          <p>
+            Fokus utama saya berada di sisi software — web, mobile, dan sistem AI. Namun, pengalaman
+            saya merakit hardware untuk berbagai proyek IoT membuat saya terbiasa memahami suatu sistem
+            secara menyeluruh, tidak hanya dari sisi kodenya.
+          </p>
+          <div class="highlights">
+            <p class="highlights-title">Quick Highlights</p>
+            <div class="highlights-row">
+              <div class="highlight-item">
+                <div class="highlight-circle">10+</div>
+                <div class="highlight-label">Proyek Selesai</div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-circle">90%</div>
+                <div class="highlight-label">Kontribusi Teknis di Proyek</div>
+              </div>
+              <div class="highlight-item">
+                <div class="highlight-circle">Top 30</div>
+                <div class="highlight-label">Tim Terdanai Batch 1, HETI SY 2026</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-    <!-- /END About Section -->
+    </div>
+  </section>
 
-    <!-- **** Projects Section **** -->
-    <section id="projects">
-      <div class="container">
-        <div class="project-wrapper">
-          <h2 class="section-title dark-blue-text">Projects</h2>
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 0</h3>
-                <div>
-                  <p class="mb-4">
-                    Describe the project being very specific, you can use the Twitter standard: no more than 280 characters: 
-                    complement the information: the skills learned or reinforced in its realization and how you faced it, 
-                    prove to be proactive in the search for solutions.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <span class="section-label">02 — Keahlian</span>
+      <h2 class="section-title">Software dulu, hardware kalau dibutuhkan</h2>
+      <div class="skills-grid">
+        <div class="skill-card software">
+          <h3>Software & Web</h3>
+          <p class="skill-note">Fokus utama saya sekarang.</p>
+          <div class="tag-cloud">
+            <span class="tag">Python</span>
+            <span class="tag">C / C++</span>
+            <span class="tag">Flutter & Dart</span>
+            <span class="tag">Laravel / PHP</span>
+            <span class="tag">LLM & RAG (LlamaIndex, ChromaDB)</span>
+            <span class="tag">Figma (UI/UX)</span>
+            <span class="tag">HTML / CSS</span>
+            <span class="tag">Git / GitHub</span>
           </div>
-          <!-- /END Project -->
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 1</h3>
-                <div>
-                  <p class="mb-4">
-                    Demonstrate in this description the skills of a programmer: such as having commitment, 
-                    having perseverance and accepting alternative solutions. Remember that being a portfolio you are not selling the project, 
-                    you are selling yourself, it reflects the resources used: Frameworks, libraries, platforms, etc.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
+        </div>
+        <div class="skill-card hardware">
+          <h3>Hardware & IoT</h3>
+          <p class="skill-note">Latar belakang yang bikin saya paham sistem secara utuh.</p>
+          <div class="tag-cloud">
+            <span class="tag">ESP32 / Raspberry Pi</span>
+            <span class="tag">Arduino IDE</span>
+            <span class="tag">Sensor & Embedded System</span>
+            <span class="tag">Webots (Robotika)</span>
+            <span class="tag">Fusion 360</span>
+            <span class="tag">3D Printing</span>
           </div>
-          <!-- /END Project -->
-
-          <!-- Notice: each .row is a project -->
-          <div class="row">
-            <div class="col-lg-4 col-sm-12">
-              <div class="project-wrapper__text load-hidden">
-                <h3 class="project-wrapper__text-title">Project Title 2</h3>
-                <div>
-                  <p class="mb-4">
-                    If the project was collaborative, reflect it in this description, that will demonstrate communication and/or leadership skills. 
-                    Additionally, if you made use of the mastery of a second language, it will reflect on you professionalism.
-                  </p>
-                </div>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn cta-btn--hero"
-                  href="#!"
-                >
-                  See Live
-                </a>
-                <a
-                  rel="noreferrer"
-                  target="_blank"
-                  class="cta-btn text-color-main"
-                  href="#!"
-                >
-                  Source Code
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-8 col-sm-12">
-              <div class="project-wrapper__image load-hidden">
-                <a rel="noreferrer" href="#!" target="_blank">
-                  <div
-                    data-tilt
-                    data-tilt-max="4"
-                    data-tilt-glare="true"
-                    data-tilt-max-glare="0.5"
-                    class="thumbnail rounded js-tilt"
-                  >
-                    <img
-                      alt="Project Image"
-                      class="img-fluid"
-                      src="assets/project.jpg"
-                    />
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-          <!-- /END Project -->
         </div>
       </div>
-    </section>
-    <!-- /END Projects Section -->
+    </div>
+  </section>
 
-    <!-- **** Contact Section **** -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-wrapper load-hidden">
-          <p class="contact-wrapper__text">[Put your call to action here]</p>
-          <a
-            rel="noreferrer"
-            target="_blank"
-            class="cta-btn cta-btn--resume"
-            href="mailto:example@email.com"
-            >Call to Action</a
-          >
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+      <span class="section-label">03 — Proyek</span>
+      <h2 class="section-title">Proyek Pilihan</h2>
+
+      <!-- Project 1: Rumino AI -->
+      <div class="project-card">
+        <div class="project-media">
+          <img src="assets/project3.jpg" alt="Tampilan Rumino AI" />
+        </div>
+        <div class="project-text">
+          <span class="project-flag">Proyek Magang</span>
+          <h3>Rumino — Chatbot AI Publik</h3>
+          <p>
+            Chatbot yang saya kembangkan selama magang di BLSDM Komdigi Surabaya UPT Kementerian Komdigi, digunakan langsung
+            oleh publik untuk mencari informasi. Menggunakan LlamaIndex dan ChromaDB untuk proses
+            pengambilan data, dengan akurasi menjawab 85% dan keberhasilan training data 95%.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span><span class="tag">LlamaIndex</span>
+            <span class="tag">ChromaDB</span><span class="tag">RAG</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/cndrdwynt/project-knowladgebot" target="_blank" rel="noreferrer">Source Code →</a>
+          </div>
         </div>
       </div>
-    </section>
-    <!-- /END Contact Section -->
 
-    <!-- **** Footer Section **** -->
-    <footer class="footer navbar-static-bottom">
-      <div class="container">
-        <a rel="noreferrer" href="#top" class="back-to-top">
-          <i class="fa fa-angle-up fa-2x" aria-hidden="true"></i>
-        </a>
-        <div class="social-links">
-          <a rel="noreferrer" href="#!" target="_blank">
-            <i class="fa fa-twitter fa-inverse"></i>
-          </a>
-          <a rel="noreferrer" href="#!" target="_blank">
-            <i class="fa fa-linkedin fa-inverse"></i>
-          </a>
-          <a rel="noreferrer" href="#!" target="_blank">
-            <i class="fa fa-github fa-inverse"></i>
-          </a>
+      <!-- Project 2: E-Commerce UI/UX (relevan Landing Page) -->
+      <div class="project-card reverse">
+        <div class="project-media">
+          <img src="assets/project2.jpg" alt="Prototype UI/UX QuickMart" />
         </div>
-
-        <hr />
-
-        <!-- Notice: if you want to give me some credit, it will be huge for me! if not, put your data on it -->
-        <p class="footer__text">
-          © 2021 - Template developed by
-          <a rel="noreferrer" href="https://github.com/cobiwave" target="_blank"
-            >Jacobo Martínez</a
-          >
-        </p>
-
-        <!-- TO DO: remove this entire paragraph once you finish your portfolio -->
-        <p class="mt-3 pt-3">
-          <a
-            rel="noreferrer"
-            class="github-button"
-            href="https://github.com/cobiwave/simplefolio/fork"
-            data-icon="octicon-repo-forked"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Fork ntkme/github-buttons on GitHub"
-            >Fork</a
-          >
-          <a
-            rel="noreferrer" 
-            class="github-button"
-            href="https://github.com/cobiwave/simplefolio"
-            data-icon="octicon-star"
-            data-size="large"
-            data-show-count="true"
-            aria-label="Star cobiwave/simplefolio on GitHub"
-            >Star</a
-          >
-        </p>
+        <div class="project-text">
+          <span class="project-flag alt">Relevan: UI/UX & Landing Page</span>
+          <h3>QuickMart — Prototype UI/UX E-Commerce</h3>
+          <p>
+            Desain untuk platform belanja online yang terintegrasi dengan IoT, mencakup alur pengguna
+            hingga tampilan halaman produk. Seluruh proses dikerjakan di Figma, mulai dari sketsa awal
+            hingga prototype interaktif.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Figma</span><span class="tag">UI/UX Design</span><span class="tag">Prototyping</span>
+          </div>
+          <div class="project-links">
+            <a href="https://www.figma.com/design/MZ52GdPChf22sybTQxAujW/Quick-Mart" target="_blank" rel="noreferrer">Lihat Prototype →</a>
+          </div>
+        </div>
       </div>
-    </footer>
-    <!-- /END Footer Section -->
 
-    <script defer type="module" src="index.js"></script>
-  </body>
+      <!-- Project 3: Stridez -->
+      <div class="project-card">
+        <div class="project-media">
+          <img src="assets/project1.jpg" alt="Tampilan aplikasi Stridez" />
+        </div>
+        <div class="project-text">
+          <span class="project-flag">Mobile App</span>
+          <h3>Stridez — Aplikasi Pelacak Lari</h3>
+          <p>
+            Aplikasi untuk melacak aktivitas lari — jarak, langkah, dan kalori — secara real-time melalui
+            GPS. Menggunakan Geolocator dan Flutter Map agar rute yang ditempuh pengguna terlihat jelas
+            di peta.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Flutter</span><span class="tag">Dart</span><span class="tag">Geolocator</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/cndrdwynt/stridez-front.git" target="_blank" rel="noreferrer">Source Code →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Indoor Air Quality (hardware) -->
+      <div class="project-card reverse">
+        <div class="project-media">
+          <img src="assets/project4.jpg" alt="Perangkat Indoor Air Quality System" />
+        </div>
+        <div class="project-text">
+          <span class="project-flag alt">Hardware + Software</span>
+          <h3>Indoor Air Quality & Smart Environment System</h3>
+          <p>
+            Sistem yang membaca data dari sensor ESP32 dan Raspberry Pi, lalu secara otomatis menyalakan
+            air purifier atau humidifier saat kualitas udara menurun. Enclosure elektroniknya saya
+            desain dan cetak sendiri menggunakan 3D printing.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Flutter</span><span class="tag">ESP32</span><span class="tag">Fusion 360</span>
+          </div>
+          <div class="project-links">
+            <a href="https://its.id/m/projectairquality" target="_blank" rel="noreferrer">Detail Proyek →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <span class="section-label">04 — Pengalaman</span>
+      <h2 class="section-title">Rekam Jejak</h2>
+      <div class="timeline">
+        <div class="t-item">
+          <div class="t-date">Feb – Jul 2026</div>
+          <div class="t-role">AI Engineer Intern</div>
+          <div class="t-org">BLSDM Komdigi Surabaya UPT Kementerian Komdigi</div>
+          <p class="t-desc">
+            Mengembangkan dan menjalankan Rumino, chatbot AI publik berbasis LLM dan RAG, dengan akurasi
+            menjawab 85% dan keberhasilan training data 95%.
+          </p>
+        </div>
+        <div class="t-item">
+          <div class="t-date">Ags 2025 – sekarang</div>
+          <div class="t-role">Laboratory Assistant</div>
+          <div class="t-org">IoT Laboratory, ITS</div>
+          <p class="t-desc">
+            Membantu jalannya praktikum dan menjaga peralatan lab
+          </p>
+        </div>
+        <div class="t-item">
+          <div class="t-date">Feb – Nov 2025</div>
+          <div class="t-role">Staff, Departemen Hubungan Luar</div>
+          <div class="t-org">BEM FTEIC</div>
+          <p class="t-desc">
+            Jadi Project Officer untuk kegiatan benchmarking antar fakultas, memastikan komunikasi dan
+            koordinasi berjalan lancar.
+          </p>
+        </div>
+      </div>
+
+      <div class="badge-row">
+        <div class="badge">
+          <span class="icon">🏆</span>
+          <div>
+            <b>Top 30 Tim Terdanai — HETI Student Youngpreneurship 2026</b>
+            <span>Mendapat pendanaan dan mentoring bisnis untuk "Storavest", sistem gudang pertanian pintar berbasis IoT.</span>
+          </div>
+        </div>
+        <div class="badge">
+          <span class="icon">🎤</span>
+          <div>
+            <b>Head of Closing Event — INCLENATION 2025</b>
+            <span>Memimpin tim penutupan acara untuk 1300+ mahasiswa baru, dari logistik sampai eksekusi.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Mari Terhubung</h2>
+      <p>Terbuka untuk peluang magang di bidang IT, web development, dan software engineering.</p>
+      <div class="btn-row" style="justify-content:center;">
+        <a href="mailto:kadekcandradwi01@gmail.com" class="btn btn--solid">Kirim Email</a>
+        <a href="https://github.com/cndrdwynt" target="_blank" rel="noreferrer" class="btn btn--ghost">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2026 Kadek Candra Dwi Yanti
+    </div>
+  </footer>
+</body>
 </html>
